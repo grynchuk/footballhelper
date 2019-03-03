@@ -1,3 +1,4 @@
+import os
 from flask import Flask
 app = Flask(__name__)
 
@@ -7,4 +8,4 @@ def hello():
     return "Hello World!"
 
 
-app.run(host='0.0.0.0', port=3333, debug=True)
+app.run(host='0.0.0.0', port=os.environ['PORT'], debug=True)
