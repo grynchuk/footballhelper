@@ -18,8 +18,6 @@ viber = Api(BotConfiguration(
     auth_token=os.environ['VIBER_TOKEN']
 ))
 
-viber.set_webhook('https://footballhelper.herokuapp.com:' + os.environ['PORT'] + '/')
-
 @app.route('/', methods=['POST'])
 def incoming():
     logging.debug("received request. post data: {0}".format(request.get_data()))
@@ -48,4 +46,5 @@ def incoming():
 
 app.run(host='0.0.0.0', port=os.environ['PORT'], debug=True)
 
+viber.set_webhook('https://footballhelper.herokuapp.com:' + os.environ['PORT'] + '/')
 
