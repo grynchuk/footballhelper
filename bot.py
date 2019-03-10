@@ -23,8 +23,9 @@ viber = Api(BotConfiguration(
 def sethook():
     print('setinng hook')
     mess = 'hook is set'
+    print(os.environ['PORT'])
     try:
-        viber.set_webhook('https://footballhelper.herokuapp.com:' + os.environ['PORT'] + '/bot')
+        viber.set_webhook('https://footballhelper.herokuapp.com/bot')
     except:
         mess = 'error'
 
