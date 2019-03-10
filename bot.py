@@ -18,7 +18,20 @@ viber = Api(BotConfiguration(
     auth_token=os.environ['VIBER_TOKEN']
 ))
 
-@app.route('/', methods=['POST'])
+
+@app.route('/sethook')
+def sethook():
+    print('setinng hook')
+    mess = 'hook is set'
+    try:
+        viber.set_webhook('https://footballhelper.herokuapp.com:' + os.environ['PORT'] + '/bot')
+    except:
+        mess = 'error'
+
+    return mess
+
+
+@app.route('/bot', methods=['POST'])
 def incoming():
     logging.debug("received request. post data: {0}".format(request.get_data()))
     # every viber message is signed, you can verify the signature using this method
@@ -45,6 +58,4 @@ def incoming():
 
 
 app.run(host='0.0.0.0', port=os.environ['PORT'], debug=True)
-
-viber.set_webhook('https://footballhelper.herokuapp.com:' + os.environ['PORT'] + '/')
 
