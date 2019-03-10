@@ -15,7 +15,7 @@ app = Flask(__name__)
 viber = Api(BotConfiguration(
     name='FootballHelperBot',
     avatar='http://site.com/avatar.jpg',
-    auth_token=os.environ['VIBER_TOKEN']
+    auth_token='4959ca612f27d01d-7c72477cc111c884-744cc75fcd748a51'
 ))
 
 
@@ -23,7 +23,7 @@ viber = Api(BotConfiguration(
 def sethook():
     print('setinng hook')
     mess = 'hook is set'
-    print(os.environ['PORT'])
+    #print(os.environ['PORT'])
     try:
         viber.set_webhook('https://footballhelper.herokuapp.com/bot')
     except:
@@ -40,6 +40,7 @@ def incoming():
         return Response(status=403)
 
     # this library supplies a simple way to receive a request object
+    print(request.get_data())
     viber_request = viber.parse_request(request.get_data())
 
     if isinstance(viber_request, ViberMessageRequest):
