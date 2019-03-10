@@ -24,7 +24,7 @@ class Settings():
         return os.environ['BOT_URL']
 
     def init_dev(self):
-        os.environ['BOT_URL']  = 'https://c47767da.ngrok.io/bot'
+        os.environ['BOT_URL']  = 'https://a404b794.ngrok.io/bot'
         os.environ['PORT']     = '8080'
 
     def __check_envs(self):
